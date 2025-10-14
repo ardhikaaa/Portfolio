@@ -6,9 +6,13 @@
     --text-color: #333;
     --light-text: #fff;
     --dark-bg: #111;
-    --section-padding: 100px 0; /* Increased padding for better section separation */
+    --section-padding: 100px 0;
     --transition: all 0.3s ease;
-    --border-radius: 8px; /* Consistent border radius */
+    --border-radius: 8px;
+    --bg-color: #f9f9f9;
+    --card-bg: #fff;
+    --border-color: #eee;
+    --shadow-color: rgba(0, 0, 0, 0.05);
 }
 
 /* Reset and Base Styles */
@@ -1263,4 +1267,209 @@ nav ul li a {
         color: var(--secondary-color);
         border-radius: 5px;
     }
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --primary-color: #1a2b4d;
+    --secondary-color: #fca311;
+    --accent-color: #2a2a2a;
+    --text-color: #e5e5e5;
+    --light-text: #fff;
+    --dark-bg: #0a0a0a;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--light-text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: var(--transition);
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+}
+
+/* Update body background */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Update header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(20, 33, 61, 0.9);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    padding: 10px 0;
+}
+
+[data-theme="dark"] header {
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
+/* Update hero section */
+#intro {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2a4365 100%);
+    color: var(--light-text);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Update about section */
+#about {
+    padding: var(--section-padding);
+    background-color: var(--bg-color);
+}
+
+/* Update resume section */
+#resume {
+    padding: var(--section-padding);
+    background-color: var(--accent-color);
+}
+
+/* Update portfolio section */
+#portfolio {
+    padding: var(--section-padding);
+    background-color: var(--bg-color);
+}
+
+/* Update contact section */
+#contact {
+    padding: var(--section-padding);
+    background-color: var(--accent-color);
+}
+
+/* Update timeline content */
+.timeline-content {
+    width: calc(50% - 40px);
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Update portfolio items */
+.folio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: var(--transition);
+    background-color: var(--card-bg);
+}
+
+/* Update modal content */
+.modal-content {
+    background-color: var(--card-bg);
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+/* Update contact info */
+.contact-info .col {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    padding: 30px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Update footer */
+footer {
+    padding: 50px 0;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+
+/* Update skill bars */
+.progress {
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Update info list */
+.info-list li strong {
+    width: 120px;
+    font-weight: 600;
+}
+
+/* Update navigation hover state */
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* Active navigation link styling */
+nav ul li a.active {
+    color: var(--secondary-color);
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Ensure hover state is visible */
+nav ul li a {
+    transition: color 0.3s ease;
+}
+
+/* Mobile navigation hover fix */
+@media (max-width: 768px) {
+    nav ul li a:hover {
+        background-color: rgba(252, 163, 17, 0.1);
+        color: var(--secondary-color);
+        border-radius: 5px;
+    }
+    
+    [data-theme="dark"] nav {
+        background-color: rgba(10, 10, 10, 0.95);
+    }
+}
+
+/* Dark mode icon change */
+[data-theme="dark"] .dark-mode-toggle i::before {
+    content: "\f185"; /* Sun icon */
 }
