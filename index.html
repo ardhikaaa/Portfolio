@@ -458,33 +458,33 @@
     </div>
 
     <!-- Header -->
-<header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-300">
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-            <div class="logo">
-                <a href="#top" class="text-2xl font-bold text-primary dark:text-blue-400">Ardhika</a>
-            </div>
-            <nav id="main-nav" class="hidden md:block">
-                <ul class="flex space-x-6">
-                    <li><a href="#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
-                    <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
-                    <li><a href="#resume" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Resume</a></li>
-                    <li><a href="#portfolio" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Portfolio</a></li>
-                    <li><a href="#contact" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-controls flex items-center space-x-4">
-                <button class="dark-mode-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" id="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:inline"></i>
-                </button>
-                <button class="nav-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 md:hidden" id="nav-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+    <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <a href="#top" class="text-2xl font-bold text-primary dark:text-blue-400">Ardhika</a>
+                </div>
+                <nav id="main-nav" class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="#resume" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Resume</a></li>
+                        <li><a href="#portfolio" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Portfolio</a></li>
+                        <li><a href="#contact" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-controls flex items-center space-x-4">
+                    <button class="dark-mode-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="nav-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 md:hidden" id="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <!-- Hero Section -->
     <section id="intro" class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 dark:from-gray-900 to-white dark:to-gray-800 pt-16 transition-colors duration-300">
@@ -875,19 +875,44 @@
         </div>
     </section>
 
+    <!-- Social Media -->
+    <section>
+    <div class="container mx-auto px-4 py-12">
+        <div class="section-intro text-center mb-16">
+            <h5 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Social Media</h5>
+        </div>
+        <div class="flex justify-center items-center gap-6 sm:gap-8 md:gap-12 max-w-md mx-auto">
+            <a href="https://github.com/ardhikaaa" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+               aria-label="GitHub Profile">
+                <i class="fab fa-github text-4xl sm:text-5xl md:text-6xl"></i>
+            </a>
+            <a href="https://www.instagram.com/radityaardhika/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+               aria-label="Instagram Profile">
+                <i class="fab fa-instagram text-4xl sm:text-5xl md:text-6xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/ardhika-raditya-19636138a/" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+               aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin text-4xl sm:text-5xl md:text-6xl"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer class="py-8 bg-gray-800 dark:bg-gray-950 text-white transition-colors duration-300">
         <div class="container mx-auto px-4">
-            <div class="footer-content flex flex-col md:flex-row justify-between items-center">
+            <div class="footer-content flex flex-col md:flex-row justify-center items-center">
                 <div class="copyright mb-4 md:mb-0">
                     <span>© Copyright Ardhika Raditya 2025.</span>
-                </div>
-                <div class="social">
-                    <ul class="footer-social flex space-x-4">
-                        <li><a href="https://github.com/ardhikaaa" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-github"></i></a></li>
-                        <li><a href="" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/ardhika-raditya-19636138a/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
                 </div>
             </div>
         </div>
