@@ -6,32 +6,479 @@
     <title>Ardhika's Portfolio</title>
     <link rel="icon" type="image/png" href="images/a.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#6c757d',
+                        dark: '#212529',
+                        light: '#f8f9fa',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for elements that Tailwind doesn't directly handle */
+        .smoothscroll {
+            scroll-behavior: smooth;
+        }
+        
+        .progress {
+            position: relative;
+            height: 8px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .dark .progress {
+            background-color: #374151;
+        }
+        
+        .progress span {
+            position: absolute;
+            top: -25px;
+            right: 0;
+            font-size: 12px;
+        }
+        
+        .percent90 {
+            width: 90%;
+            background-color: #007bff;
+        }
+        
+        .percent85 {
+            width: 85%;
+            background-color: #007bff;
+        }
+        
+        .percent55 {
+            width: 55%;
+            background-color: #007bff;
+        }
+        
+        .percent70 {
+            width: 70%;
+            background-color: #007bff;
+        }
+        
+        .timeline-block {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-block:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            height: calc(100% + 30px);
+            width: 2px;
+            background: #e9ecef;
+        }
+        
+        .dark .timeline-block:before {
+            background: #374151;
+        }
+        
+        .timeline-ico {
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+        
+        .folio-item {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .folio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .folio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .folio-item:hover .overlay {
+            opacity: 1;
+        }
+        
+        .folio-item-table {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .folio-item-cell {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: white;
+        }
+        
+        .folio-title {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .folio-types {
+            font-size: 14px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .view-project-btn {
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .project-info {
+            padding: 15px;
+            background: #f8f9fa;
+        }
+        
+        .dark .project-info {
+            background: #1f2937;
+        }
+        
+        .project-category {
+            color: #007bff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .project-tech {
+            margin-top: 10px;
+        }
+        
+        .tech-tag {
+            background: #e9ecef;
+            color: #495057;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+        
+        .dark .tech-tag {
+            background: #374151;
+            color: #d1d5db;
+        }
+        
+        .popup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .dark .modal-content {
+            background: #1f2937;
+            color: #f3f4f6;
+        }
+        
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .description-box h4 {
+            margin-bottom: 10px;
+        }
+        
+        .description-box p {
+            margin-bottom: 15px;
+        }
+        
+        .categories {
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        .dark .categories {
+            color: #9ca3af;
+        }
+        
+        .link-box {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .link-box a {
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+        
+        .link-box a:first-child {
+            background: #007bff;
+            color: white;
+        }
+        
+        .link-box a:last-child {
+            background: #6c757d;
+            color: white;
+        }
+        
+        #go-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #go-top.show {
+            opacity: 1;
+        }
+        
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .dark #preloader {
+            background: #111827;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .dark .loader {
+            border: 5px solid #374151;
+            border-top: 5px solid #3b82f6;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Dark mode transitions */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Custom scrollbar for dark mode */
+        .dark ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+
+        .portfolio-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+        }
+        
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(147, 51, 234, 0.95) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portfolio-card:hover::before {
+            opacity: 1;
+        }
+        
+        .portfolio-card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-card:hover .icon-container {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
+            color: white;
+        }
+        
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .category-badge {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Gradient variations for different cards */
+        .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .gradient-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .gradient-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .gradient-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .gradient-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .gradient-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+    </style>
 </head>
-<body id="top">
+<body id="top" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <!-- Header -->
-    <!-- Header -->
-<header>
-    <div class="container">
-        <div class="header-content">
+<header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-300">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
             <div class="logo">
-                <a href="#top">Ardhika</a>
+                <a href="#top" class="text-2xl font-bold text-primary dark:text-blue-400">Ardhika</a>
             </div>
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#intro" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#resume" class="nav-link">Resume</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+            <nav id="main-nav" class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
+                    <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
+                    <li><a href="#resume" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Resume</a></li>
+                    <li><a href="#portfolio" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Portfolio</a></li>
+                    <li><a href="#contact" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Contact</a></li>
                 </ul>
             </nav>
-            <div class="header-controls">
-                <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+            <div class="header-controls flex items-center space-x-4">
+                <button class="dark-mode-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
                 </button>
-                <button class="nav-toggle" id="nav-toggle">
+                <button class="nav-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 md:hidden" id="nav-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -40,145 +487,144 @@
 </header>
 
     <!-- Hero Section -->
-    <section id="intro">
-        <div class="container">
-            <div class="intro-content">
-                <h5>Hello, World.</h5>
-                <h1>I'm Ardhika Raditya.</h1>
-                <p class="intro-position">
-                    <span>Front-end Developer</span>
-                    <span>UI/UX Designer</span>
+    <section id="intro" class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 dark:from-gray-900 to-white dark:to-gray-800 pt-16 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="intro-content text-center max-w-3xl mx-auto">
+                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-2 animate-fade-in">Hello, World.</h5>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white animate-slide-up">I'm Ardhika Raditya.</h1>
+                <p class="intro-position text-xl md:text-2xl mb-8 text-gray-700 dark:text-gray-300 animate-slide-up" style="animation-delay: 0.1s">
+                    <span class="block">Front-end Developer</span>
+                    <span class="block">UI/UX Designer</span>
                 </p>
-                <a href="#about" class="button smoothscroll">More About Me</a>
+                <a href="#about" class="button smoothscroll inline-block bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors animate-slide-up" style="animation-delay: 0.2s">More About Me</a>
             </div>
         </div>
-        <!-- <ul class="intro-social">
-            <li><a href="https://github.com/ardhikaaa" target="_blank"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://www.instagram.com/radityaardhika/?next=%2F" target="_blank"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/ardhika-raditya-19636138a/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-        </ul> -->
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="row section-intro">
-                <div class="col-12">
-                    <h5>About</h5>
-                    <h1>Let me introduce myself.</h1>
-                    <div class="intro-info">
-                        <img src="images/profile.jpeg" alt="Profile Picture">
-                        <p class="lead">Hi, I'm Ardhika Raditya, a passionate Software Developer.
-                            I specialize in building clean and responsive web interfaces. With a focus on user experience, I bring projects to life through modern tools and technologies.
-                            Currently, I'm studying at SMK, and always open to exciting collaborations and projects.
-                            Let's build something amazing!</p>
-                    </div>
+    <section id="about" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="section-intro text-center mb-16">
+                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-2">About</h5>
+                <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Let me introduce myself.</h1>
+                <div class="intro-info flex flex-col md:flex-row items-center gap-8 max-w-4xl mx-auto">
+                    <img src="images/profile.jpeg" alt="Profile Picture" class="w-48 h-48 rounded-full object-cover">
+                    <p class="lead text-lg text-gray-700 dark:text-gray-300">Hi, I'm Ardhika Raditya, a passionate Software Developer.
+                        I specialize in building clean and responsive web interfaces. With a focus on user experience, I bring projects to life through modern tools and technologies.
+                        Currently, I'm studying at SMK, and always open to exciting collaborations and projects.
+                        Let's build something amazing!</p>
                 </div>
             </div>
-            <div class="row about-content">
-                <div class="col-6">
-                    <h3>Profile</h3>
-                    <p>A student of SMK Informatika Pesat majoring in RPL (Software Engineering). 
+            <div class="about-content grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Profile</h3>
+                    <p class="mb-6 text-gray-700 dark:text-gray-300">A student of SMK Informatika Pesat majoring in RPL (Software Engineering). 
                         I love to explore new things and have aspirations to work in the field of website and application development. 
                         Mastering applications such as Visual Studio Code, Android Studio, and Figma.</p>
-                    <ul class="info-list">
-                        <li>
-                            <strong>Fullname:</strong>
-                            <span>Ardhika Raditya Muhammad Al-azizi Tumanggor</span>
+                    <ul class="info-list space-y-3">
+                        <li class="flex">
+                            <strong class="w-32 text-gray-900 dark:text-white">Fullname:</strong>
+                            <span class="text-gray-700 dark:text-gray-300">Ardhika Raditya Muhammad Al-azizi Tumanggor</span>
                         </li>
-                        <li>
-                            <strong>Birth Date:</strong>
-                            <span>June 25, 2008</span>
+                        <li class="flex">
+                            <strong class="w-32 text-gray-900 dark:text-white">Birth Date:</strong>
+                            <span class="text-gray-700 dark:text-gray-300">June 25, 2008</span>
                         </li>
-                        <li>
-                            <strong>Job:</strong>
-                            <span>Student</span>
+                        <li class="flex">
+                            <strong class="w-32 text-gray-900 dark:text-white">Job:</strong>
+                            <span class="text-gray-700 dark:text-gray-300">Student</span>
                         </li>
-                        <li>
-                            <strong>Email:</strong>
-                            <span>radityaardhika@gmail.com</span>
+                        <li class="flex">
+                            <strong class="w-32 text-gray-900 dark:text-white">Email:</strong>
+                            <span class="text-gray-700 dark:text-gray-300">radityaardhika@gmail.com</span>
                         </li>
                     </ul>
                 </div>
-                <div class="col-6">
-                    <h3>Skills</h3>
-                    <p>master html, css, and have mastered front-end programming languages such as, javascript, and react, and back-end languages such as php</p>
-                    <ul class="skill-bars">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Skills</h3>
+                    <p class="mb-6 text-gray-700 dark:text-gray-300">master html, css, and have mastered front-end programming languages such as, javascript, and react, and back-end languages such as php</p>
+                    <ul class="skill-bars space-y-4">
                         <li>
-                            <strong>HTML5</strong>
-                            <div class="progress percent90"><span>90%</span></div>                            
+                            <div class="flex justify-between mb-1">
+                                <strong class="text-gray-900 dark:text-white">HTML5</strong>
+                                <span class="text-gray-700 dark:text-gray-300">90%</span>
+                            </div>
+                            <div class="progress percent90"></div>                            
                         </li>
                         <li>
-                            <strong>CSS3</strong>
-                            <div class="progress percent85"><span>85%</span></div>                            
+                            <div class="flex justify-between mb-1">
+                                <strong class="text-gray-900 dark:text-white">CSS3</strong>
+                                <span class="text-gray-700 dark:text-gray-300">85%</span>
+                            </div>
+                            <div class="progress percent85"></div>                            
                         </li>
                         <li>
-                            <strong>JavaScript</strong>
-                            <div class="progress percent55"><span>55%</span></div>                            
+                            <div class="flex justify-between mb-1">
+                                <strong class="text-gray-900 dark:text-white">JavaScript</strong>
+                                <span class="text-gray-700 dark:text-gray-300">55%</span>
+                            </div>
+                            <div class="progress percent55"></div>                            
                         </li>
                         <li>						
-                            <strong>PHP</strong>
-                            <div class="progress percent70"><span>70%</span></div>                           
+                            <div class="flex justify-between mb-1">
+                                <strong class="text-gray-900 dark:text-white">PHP</strong>
+                                <span class="text-gray-700 dark:text-gray-300">70%</span>
+                            </div>
+                            <div class="progress percent70"></div>                           
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="row button-section">
-                <div class="col-12">
-                    <a href="https://github.com/ardhikaaa" target="_blank" class="button button-primary">Github</a>
-                </div>
+            <div class="button-section mt-12 text-center">
+                <a href="https://github.com/ardhikaaa" target="_blank" class="button button-primary inline-block bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors">Github</a>
             </div>
         </div>
     </section>
 
     <!-- Resume Section -->
-    <section id="resume" class="grey-section">
-        <div class="container">
-            <div class="row section-intro">
-                <div class="col-12">
-                    <h5>Expertise</h5>
-                    <h1>Mastered Applications</h1>
-                    <p class="lead">have mastered several applications in making my project</p>
-                </div>
+    <section id="resume" class="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="section-intro text-center mb-16">
+                <h5 class="text-lg font-medium text-gray-600 dark:text-gray-400 mb-2">Expertise</h5>
+                <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Mastered Applications</h1>
+                <p class="lead text-lg text-gray-700 dark:text-gray-300">have mastered several applications in making my project</p>
             </div>
-            <div class="row resume-timeline">
-                <div class="col-12">
-                    <div class="timeline-wrap">
-                        <div class="timeline-block">
-                            <div class="timeline-ico">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h4>Visual Studio Code</h4>
-                                <p>The code editor I use to develop applications with various programming languages. It's lightweight, flexible, and supports many extensions to speed up the coding process.</p>
-                            </div>
+            <div class="resume-timeline max-w-3xl mx-auto">
+                <div class="timeline-wrap">
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <div class="timeline-block">
-                            <div class="timeline-ico">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h4>Android Studio</h4>
-                                <p>The official IDE from Google that I use to build and test Android apps. Integrated with emulators, build tools, and powerful debugging features.</p>
-                            </div>
+                        <div class="timeline-content bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-colors duration-300">
+                            <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Visual Studio Code</h4>
+                            <p class="text-gray-700 dark:text-gray-300">The code editor I use to develop applications with various programming languages. It's lightweight, flexible, and supports many extensions to speed up the coding process.</p>
                         </div>
-                        <div class="timeline-block">
-                            <div class="timeline-ico">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h4>Figma</h4>
-                                <p>A web-based UI/UX design tool that I use to create interactive prototypes, wireframes, and application interface designs that are attractive and functional.</p>
-                            </div>
+                    </div>
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-code"></i>
                         </div>
-                        <div class="timeline-block">
-                            <div class="timeline-ico">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="timeline-content">
-                                <h4>Wordpress</h4>
-                                <p>A popular CMS that I use to build and manage websites efficiently, either using ready-made themes or customizing code for specific needs.</p>
-                            </div>
+                        <div class="timeline-content bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-colors duration-300">
+                            <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Android Studio</h4>
+                            <p class="text-gray-700 dark:text-gray-300">The official IDE from Google that I use to build and test Android apps. Integrated with emulators, build tools, and powerful debugging features.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="timeline-content bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-colors duration-300">
+                            <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Figma</h4>
+                            <p class="text-gray-700 dark:text-gray-300">A web-based UI/UX design tool that I use to create interactive prototypes, wireframes, and application interface designs that are attractive and functional.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-block">
+                        <div class="timeline-ico">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="timeline-content bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md transition-colors duration-300">
+                            <h4 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Wordpress</h4>
+                            <p class="text-gray-700 dark:text-gray-300">A popular CMS that I use to build and manage websites efficiently, either using ready-made themes or customizing code for specific needs.</p>
                         </div>
                     </div>
                 </div>
@@ -187,267 +633,269 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="row section-intro">
-                <div class="col-12">
-                    <h5>Portfolio</h5>
-                    <h1>Check Out Some of My Works.</h1>
-                </div>
+    <section id="portfolio" class="container mx-auto px-4">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="inline-block mb-4">
+                <span class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Portfolio</span>
             </div>
-            <div class="row portfolio-content">
-                <div class="col-12">
-                    <div class="folio-wrapper">
-                        <div class="folio-item">
-                            <div class="item-wrap">
-                                <img src="images/portfolio/foodie.png" alt="foodie">
-                                <a href="#modal-01" class="overlay">
-                                    <div class="folio-item-table">
-                                        <div class="folio-item-cell">
-                                            <h3 class="folio-title">Foodie</h3>
-                                            <span class="folio-types">Web Design</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                My Creative Works
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Explore my latest projects showcasing expertise in web and mobile development
+            </p>
+        </div>
 
-                        <div class="folio-item">
-                            <div class="item-wrap">
-                                <img src="images/portfolio/pilgrimpaths.png" alt="pilgrimpaths">
-                                <a href="#modal-02" class="overlay">
-                                    <div class="folio-item-table">
-                                        <div class="folio-item-cell">
-                                            <h3 class="folio-title">PilgrimPaths</h3>
-                                            <span class="folio-types">Web Design</span>
-                                        </div>
-                                    </div>
-                                </a>
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="filter-btn active px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl" data-filter="all">
+                All Projects
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-lg hover:shadow-xl" data-filter="web-design">
+                Web Design
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-lg hover:shadow-xl" data-filter="web-dev">
+                Web Development
+            </button>
+            <button class="filter-btn px-6 py-3 rounded-full font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-lg hover:shadow-xl" data-filter="app-dev">
+                App Development
+            </button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Portfolio Item 1: Foodie -->
+            <div class="portfolio-item" data-category="web-design">
+                <div class="portfolio-card gradient-1 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-utensils text-4xl text-white"></i>
                             </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">Web Design</span>
                         </div>
-                        <div class="folio-item">
-                            <div class="item-wrap">
-                                <img src="images/portfolio/library-management.png" alt="library-management">
-                                <a href="#modal-03" class="overlay">
-                                    <div class="folio-item-table">
-                                        <div class="folio-item-cell">
-                                            <h3 class="folio-title">Library Management</h3>
-                                            <span class="folio-types">Web Development</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">Foodie</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">Modern culinary website with responsive design and interactive menu</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">HTML5</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">CSS3</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Bootstrap</span>
                         </div>
-                        <div class="folio-item">
-                            <div class="item-wrap">
-                                <img src="images/portfolio/UKS.png" alt="expro-hotel">
-                                <a href="#modal-04" class="overlay">
-                                    <div class="folio-item-table">
-                                        <div class="folio-item-cell">
-                                            <h3 class="folio-title">UKS Information System</h3>
-                                            <span class="folio-types">Web Development</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="folio-item">
-                            <div class="item-wrap">
-                                <img src="images/portfolio/Todolist.png" alt="To do list">
-                                <a href="#modal-05" class="overlay">
-                                    <div class="folio-item-table">
-                                        <div class="folio-item-cell">
-                                            <h3 class="folio-title">To do list</h3>
-                                            <span class="folio-types">App Development</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="folio-item">
-                            <div class="item-wrap">
-                                <img src="images/portfolio/ternakuang2.jpg" alt="Ternak Uang">
-                                <a href="#modal-06" class="overlay">
-                                    <div class="folio-item-table">
-                                        <div class="folio-item-cell">
-                                            <h3 class="folio-title">Ternak Uang</h3>
-                                            <span class="folio-types">App Development</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        
+                        <a href="https://ardhikaaa.github.io/webfoodie/" target="_blank" class="inline-flex items-center gap-2 bg-white text-purple-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <!-- Portfolio Item 2: PilgrimPaths -->
+            <div class="portfolio-item" data-category="web-design">
+                <div class="portfolio-card gradient-2 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-kaaba text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">Web Design</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">PilgrimPaths</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">Hajj & Umrah booking platform with clean UI and easy navigation</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">HTML5</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">CSS3</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Bootstrap</span>
+                        </div>
+                        
+                        <a href="https://ardhikaaa.github.io/hajj-and-umrah-web/" target="_blank" class="inline-flex items-center gap-2 bg-white text-pink-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 3: Library Management -->
+            <div class="portfolio-item" data-category="web-dev">
+                <div class="portfolio-card gradient-3 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-book text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">Web Dev</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">Library Management</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">Complete library system with book management and user dashboard</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Laravel</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">MySQL</span>
+                        </div>
+                        
+                        <a href="https://github.com/ardhikaaa/library-management-laravel-11rpl2" target="_blank" class="inline-flex items-center gap-2 bg-white text-cyan-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 4: UKS System -->
+            <div class="portfolio-item" data-category="web-dev">
+                <div class="portfolio-card gradient-4 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-briefcase-medical text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">Web Dev</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">UKS System</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">School healthcare management with medical reports tracking</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">MySQL</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Bootstrap</span>
+                        </div>
+                        
+                        <a href="https://github.com/ardhikaaa/UPP" target="_blank" class="inline-flex items-center gap-2 bg-white text-green-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 5: To Do List -->
+            <div class="portfolio-item" data-category="app-dev">
+                <div class="portfolio-card gradient-5 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-list-check text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">App Dev</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">To Do List App</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">Cross-platform task organizer with intuitive interface</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">React Native</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Expo</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">JavaScript</span>
+                        </div>
+                        
+                        <a href="https://github.com/ardhikaaa/Tugasku" target="_blank" class="inline-flex items-center gap-2 bg-white text-orange-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 6: Ternak Uang -->
+            <div class="portfolio-item" data-category="app-dev">
+                <div class="portfolio-card gradient-6 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-piggy-bank text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">App Dev</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">Ternak Uang</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">Investment learning app for financial literacy education</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">React Native</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Expo</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">JavaScript</span>
+                        </div>
+                        
+                        <a href="https://github.com/ardhikaaa/Ternak-uang" target="_blank" class="inline-flex items-center gap-2 bg-white text-indigo-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- Modal Popups -->
-    <div id="modal-01" class="popup-modal">
-        <div class="modal-content">
-            <div class="media">
-                <img src="images/portfolio/modals/m-foodie.png" alt="" />
-            </div>
-            <div class="description-box">
-                <h4>Foodie</h4>
-                <p>Foodie is a culinary-themed website that I designed using HTML, CSS, and Bootstrap framework. This website has a responsive and modern look, featuring a food menu list, image gallery, and contact page.</p>
-                <div class="categories">Web Design</div>
-            </div>
-            <div class="link-box">
-                <a href="https://ardhikaaa.github.io/webfoodie/" target="_blank">Details</a>
-                <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-02" class="popup-modal">
-        <div class="modal-content">
-            <div class="media">
-                <img src="images/portfolio/modals/m-pilgrimpaths.png" alt="" />
-            </div>
-            <div class="description-box">
-                <h4>PilgrimPaths</h4>
-                <p>PilgrimPaths is a Hajj and Umrah ticket booking website design that I developed using HTML, CSS, and Bootstrap framework. The website is designed with a clean look and easy-to-understand navigation, so that users can book tickets quickly and conveniently. The main focus of the design is easy access to information, as well as a calm and professional visual feel in accordance with the needs of worship.</p>
-                <div class="categories">Web Design</div>
-            </div>
-            <div class="link-box">
-                <a href="https://ardhikaaa.github.io/hajj-and-umrah-web/" target="_blank">Details</a>
-                <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-03" class="popup-modal">
-        <div class="modal-content">
-            <div class="media">
-                <img src="images/portfolio/modals/m-library-management.png" alt="" />
-            </div>
-            <div class="description-box">
-                <h4>Library Management</h4>
-                <p>I have designed a Laravel-based Library Management website that makes it easy to manage books, members, loans, and returns efficiently. The website is equipped with a search feature, a login system for admin and users, and an intuitive dashboard to monitor library activities. By utilizing the power of Laravel, the system is fast, secure, and easy to develop.</p>
-                <div class="categories">Web Development</div>
-            </div>
-            <div class="link-box">
-                <a href="https://github.com/ardhikaaa/library-management-laravel-11rpl2" target="_blank">Details</a>
-                <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-04" class="popup-modal">
-        <div class="modal-content">
-            <div class="media">
-                <img src="images/portfolio/UKS.png" alt="" />
-            </div>
-            <div class="description-box">
-                <h4>UKS Information System</h4>
-                <p>A school healthcare management website designed to record student health data, manage medical reports, and monitor clinic activities efficiently. It helps schools provide better healthcare support through an organized, digital system.</p>
-                <div class="categories">Web Development</div>
-            </div>
-            <div class="link-box">
-                <a href="https://github.com/ardhikaaa/UPP" target="_blank">Details</a>
-                <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-05" class="popup-modal">
-        <div class="modal-content">
-            <div class="media">
-                <img src="images/portfolio/modals/m-Todolist.png" alt="" />
-            </div>
-            <div class="description-box">
-                <h4>To do list</h4>
-                <p>I created a To Do List app using Android Studio (Expo) and React Native. The app helps users log, organize, and delete daily tasks with a simple and responsive interface. This project was created as an exercise in cross-platform mobile development, focusing on user experience and state management using React Native.</p>
-                <div class="categories">App Development</div>
-            </div>
-            <div class="link-box">
-                <a href="https://github.com/ardhikaaa/Tugasku" target="_blank">Details</a>
-                <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-06" class="popup-modal">
-        <div class="modal-content">
-            <div class="media">
-                <img src="images/portfolio/modals/m-ternakuang.jpg" alt="" />
-            </div>
-            <div class="description-box">
-                <h4>Ternak Uang</h4>
-                <p>Ternak Uang is an investment learning app that I developed using Android Studio (Expo) and React Native. The app is designed to help users understand how to manage money wisely, from investment basics, financial management strategies, to tips on utilizing money to achieve financial goals. With a simple interface and practical material, Ternak Uang is suitable for beginners who want to learn how to build a better financial future.</p>
-                <div class="categories">App Development</div>
-            </div>
-            <div class="link-box">
-                <a href="https://github.com/ardhikaaa/Ternak-uang" target="_blank">Details</a>
-                <a href="#" class="popup-modal-dismiss">Close</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="row contact-info">
-                <div class="col">
-                    <div class="icon">
-                        <i class="fas fa-envelope"></i>
+    <section id="contact" class="py-20 mt-10 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="contact-info grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="col text-center">
+                    <div class="icon mb-4 flex justify-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
                     </div>
-                    <h5>Email Me At</h5>
-                    <p>radityaardhika@gmail.com</p>
+                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Email Me At</h5>
+                    <p class="text-gray-700 dark:text-gray-300">radityaardhika@gmail.com</p>
                 </div>
-                <div class="col">
-                    <div class="icon">
-                        <i class="fas fa-phone"></i>
+                <div class="col text-center">
+                    <div class="icon mb-4 flex justify-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-phone text-xl"></i>
+                        </div>
                     </div>
-                    <h5>Call Me At</h5>
-                    <p>Phone: (+62) 812-9728-2788</p>
+                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Call Me At</h5>
+                    <p class="text-gray-700 dark:text-gray-300">Phone: (+62) 812-9728-2788</p>
                 </div>
-                <div class="col">
-                    <div class="icon">
-                        <i class="fab fa-instagram"></i>
+                <div class="col text-center">
+                    <div class="icon mb-4 flex justify-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </div>
                     </div>
-                    <h5>instagram</h5>
-                    <p>@radityaardhika</p>
+                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">instagram</h5>
+                    <p class="text-gray-700 dark:text-gray-300">@radityaardhika</p>
                 </div>
-                <div class="col">
-                    <div class="icon">
-                        <i class="fab fa-linkedin"></i>
+                <div class="col text-center">
+                    <div class="icon mb-4 flex justify-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </div>
                     </div>
-                    <h5>LinkedIn</h5>
-                    <p>Ardhika Raditya</p>
+                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">LinkedIn</h5>
+                    <p class="text-gray-700 dark:text-gray-300">Ardhika Raditya</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="copyright">
+    <footer class="py-8 bg-gray-800 dark:bg-gray-950 text-white transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="footer-content flex flex-col md:flex-row justify-between items-center">
+                <div class="copyright mb-4 md:mb-0">
                     <span>© Copyright Ardhika Raditya 2025.</span>
                 </div>
                 <div class="social">
-                    <ul class="footer-social">
-                        <li><a href="https://github.com/ardhikaaa" target="_blank"><i class="fab fa-github"></i></a></li>
-                        <li><a href="https://www.instagram.com/radityaardhika/?next=%2F" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/ardhika-raditya-19636138a/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                    <ul class="footer-social flex space-x-4">
+                        <li><a href="https://github.com/ardhikaaa" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-github"></i></a></li>
+                        <li><a href="" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/ardhika-raditya-19636138a/" target="_blank" class="hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Go Top Button - Fixed -->
+    <!-- Go Top Button -->
     <div id="go-top">
         <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
     </div>
 
     <!-- JavaScript -->
