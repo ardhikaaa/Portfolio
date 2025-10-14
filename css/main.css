@@ -822,3 +822,445 @@ footer {
         content: '';
     }
 }
+
+/* Add these fixes to your main.css file */
+
+/* Fix 1: Make columns stack properly on mobile */
+@media (max-width: 768px) {
+    .col-6 {
+        width: 100%; /* Stack columns on mobile */
+    }
+    
+    /* Fix the intro position spacing */
+    .intro-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    /* Improve button section spacing */
+    .button-section {
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+
+/* Fix 2: Modal content responsiveness */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Better width for mobile */
+        max-height: 85vh;
+    }
+    
+    .description-box {
+        padding: 20px; /* Reduce padding on mobile */
+    }
+    
+    .link-box {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 20px 20px;
+    }
+    
+    .link-box a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Fix 3: Better hero section on small screens */
+@media (max-width: 576px) {
+    #intro {
+        height: auto;
+        min-height: 100vh;
+        padding: 80px 20px 60px;
+    }
+    
+    #intro .container {
+        margin-top: 0;
+    }
+    
+    .intro-content h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    
+    .intro-content p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Fix 4: Contact info cards on mobile */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column;
+    }
+    
+    .contact-info .col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Fix 5: Profile image and info layout */
+@media (max-width: 768px) {
+    .intro-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .intro-info img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Fix 6: Timeline blocks on tablet */
+@media (max-width: 992px) {
+    .timeline-block {
+        flex-direction: column !important;
+        align-items: flex-start;
+        padding-left: 80px; /* Add space for icon */
+    }
+    
+    .timeline-ico {
+        position: absolute;
+        left: 0;
+        transform: none;
+    }
+    
+    .timeline-content {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+/* Fix 7: Portfolio grid improvements */
+@media (max-width: 576px) {
+    .folio-item img {
+        height: 200px; /* Adjust image height on small screens */
+    }
+    
+    .folio-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Fix 16: Portfolio image adjustments for better display */
+.folio-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.folio-item img {
+    width: 100%;
+    height: 320px; /* Optimal height for portfolio showcase */
+    object-fit: cover;
+    object-position: center top; /* Show top portion of images */
+    transition: transform 0.4s ease, filter 0.3s ease;
+    display: block;
+    filter: brightness(0.95); /* Slightly darken for better contrast */
+}
+
+/* Brighten image on hover */
+.folio-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(1);
+}
+
+/* Alternative: Contain mode for specific images */
+.folio-item img.contain {
+    object-fit: contain;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+/* Ensure consistent card heights */
+.item-wrap {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #f8f8f8, #e8e8e8);
+    border-radius: var(--border-radius);
+}
+
+/* Better overlay positioning and animation */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(20, 33, 61, 0.9) 0%, rgba(42, 67, 101, 0.95) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+.folio-item:hover .overlay {
+    opacity: 1;
+}
+
+/* Improve text in overlay */
+.folio-item-table {
+    text-align: center;
+    color: var(--light-text);
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.folio-item:hover .folio-item-table {
+    transform: translateY(0);
+}
+
+.folio-title {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.folio-types {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Improve portfolio grid spacing and layout */
+.folio-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    align-items: stretch;
+    margin-top: 20px;
+}
+
+/* Add subtle shadow to portfolio items */
+.folio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    background-color: white;
+}
+
+.folio-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Portfolio responsive adjustments */
+@media (max-width: 1200px) {
+    .folio-item img,
+    .item-wrap {
+        height: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .folio-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .folio-item img,
+    .item-wrap {
+        height: 300px;
+    }
+    
+    .folio-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .folio-wrapper {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 500px;
+        margin: 20px auto 0;
+    }
+    
+    .folio-item img,
+    .item-wrap {
+        height: 280px;
+    }
+}
+
+@media (max-width: 576px) {
+    .folio-item img,
+    .item-wrap {
+        height: 240px;
+    }
+    
+    .folio-title {
+        font-size: 1.3rem;
+    }
+    
+    .folio-types {
+        font-size: 0.9rem;
+    }
+}
+
+/* Optional: Different image styles for specific portfolio items */
+/* Add these classes in HTML if needed */
+.folio-item.tall img,
+.folio-item.tall .item-wrap {
+    height: 380px;
+}
+
+.folio-item.wide img {
+    object-position: center center;
+}
+
+.folio-item.top img {
+    object-position: center top;
+}
+
+.folio-item.bottom img {
+    object-position: center bottom;
+}
+
+/* Fix 8: Footer improvements */
+@media (max-width: 576px) {
+    .footer-content {
+        padding: 20px 0;
+    }
+    
+    .copyright {
+        font-size: 0.9rem;
+    }
+    
+    .footer-social a {
+        font-size: 1rem;
+    }
+}
+
+/* Fix 9: Navigation improvements */
+@media (max-width: 768px) {
+    nav {
+        top: 65px; /* Adjust based on actual header height */
+        max-height: calc(100vh - 65px);
+        overflow-y: auto;
+    }
+    
+    nav ul li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Fix 10: Skill bars on mobile */
+@media (max-width: 768px) {
+    .skill-bars {
+        margin-top: 20px;
+    }
+    
+    .progress {
+        height: 8px;
+    }
+    
+    .progress span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix 11: Better text readability on all screens */
+@media (max-width: 576px) {
+    body {
+        font-size: 0.95rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+    }
+    
+    h4 {
+        font-size: 1.3rem;
+    }
+    
+    h5 {
+        font-size: 1rem;
+    }
+}
+
+/* Fix 12: Info list improvements */
+@media (max-width: 576px) {
+    .info-list li {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .info-list li strong {
+        width: 100%;
+    }
+}
+
+/* Fix 13: Go top button on mobile */
+@media (max-width: 576px) {
+    #go-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+/* Fix 14: Section padding adjustments */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 60px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --section-padding: 40px 0;
+    }
+}
+
+/* Fix 15: Header navigation hover color fix */
+nav ul li a:hover {
+    color: var(--secondary-color); /* Change to secondary color on hover */
+}
+
+/* Active navigation link styling */
+nav ul li a.active {
+    color: var(--secondary-color);
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Ensure hover state is visible */
+nav ul li a {
+    transition: color 0.3s ease;
+}
+
+/* Mobile navigation hover fix */
+@media (max-width: 768px) {
+    nav ul li a:hover {
+        background-color: rgba(252, 163, 17, 0.1); /* Subtle background on hover */
+        color: var(--secondary-color);
+        border-radius: 5px;
+    }
+}
