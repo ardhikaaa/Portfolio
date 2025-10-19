@@ -239,3 +239,44 @@ function updateDarkModeIcon(theme) {
         portfolioItems.forEach(item => {
             item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         });
+
+// ubah ke 4 kalau mau tampil 4 card per halaman
+// const itemsPerPage = 3; 
+//     const items = document.querySelectorAll('.portfolio-item');
+//     const totalItems = items.length;
+//     const totalPages = Math.ceil(totalItems / itemsPerPage);
+//     let currentPage = 1;
+
+//     const prevBtn = document.getElementById('prevPage');
+//     const nextBtn = document.getElementById('nextPage');
+//     const pageInfo = document.getElementById('pageInfo');
+
+//     function showPage(page) {
+//         const start = (page - 1) * itemsPerPage;
+//         const end = start + itemsPerPage;
+
+//         items.forEach((item, index) => {
+//             item.style.display = (index >= start && index < end) ? 'block' : 'none';
+//         });
+
+//         pageInfo.textContent = `Page ${page} of ${totalPages}`;
+//         prevBtn.disabled = (page === 1);
+//         nextBtn.disabled = (page === totalPages);
+//     }
+
+//     prevBtn.addEventListener('click', () => {
+//         if (currentPage > 1) {
+//             currentPage--;
+//             showPage(currentPage);
+//         }
+//     });
+
+//     nextBtn.addEventListener('click', () => {
+//         if (currentPage < totalPages) {
+//             currentPage++;
+//             showPage(currentPage);
+//         }
+//     });
+
+//     // Inisialisasi tampilan pertama
+//     showPage(currentPage);

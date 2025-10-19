@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icon -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <!-- CSS -->
+     <link rel="stylesheet" href="css/main.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -37,418 +42,8 @@
             }
         }
     </script>
-    <style>
-        /* Custom styles for elements that Tailwind doesn't directly handle */
-        .smoothscroll {
-            scroll-behavior: smooth;
-        }
-        
-        .progress {
-            position: relative;
-            height: 8px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .dark .progress {
-            background-color: #374151;
-        }
-        
-        .progress span {
-            position: absolute;
-            top: -25px;
-            right: 0;
-            font-size: 12px;
-        }
-        
-        .percent90 {
-            width: 90%;
-            background-color: #007bff;
-        }
-        
-        .percent85 {
-            width: 85%;
-            background-color: #007bff;
-        }
-        
-        .percent55 {
-            width: 55%;
-            background-color: #007bff;
-        }
-        
-        .percent70 {
-            width: 70%;
-            background-color: #007bff;
-        }
-        
-        .timeline-block {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-block:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 5px;
-            height: calc(100% + 30px);
-            width: 2px;
-            background: #e9ecef;
-        }
-        
-        .dark .timeline-block:before {
-            background: #374151;
-        }
-        
-        .timeline-ico {
-            position: absolute;
-            left: -10px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #007bff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 10px;
-        }
-        
-        .folio-item {
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-        
-        .folio-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        
-        .folio-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .folio-item:hover .overlay {
-            opacity: 1;
-        }
-        
-        .folio-item-table {
-            display: table;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .folio-item-cell {
-            display: table-cell;
-            vertical-align: middle;
-            text-align: center;
-            color: white;
-        }
-        
-        .folio-title {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-        
-        .folio-types {
-            font-size: 14px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .view-project-btn {
-            background: #007bff;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-size: 14px;
-            display: inline-block;
-        }
-        
-        .project-info {
-            padding: 15px;
-            background: #f8f9fa;
-        }
-        
-        .dark .project-info {
-            background: #1f2937;
-        }
-        
-        .project-category {
-            color: #007bff;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .project-tech {
-            margin-top: 10px;
-        }
-        
-        .tech-tag {
-            background: #e9ecef;
-            color: #495057;
-            font-size: 12px;
-            padding: 3px 8px;
-            border-radius: 3px;
-            margin-right: 5px;
-            display: inline-block;
-        }
-        
-        .dark .tech-tag {
-            background: #374151;
-            color: #d1d5db;
-        }
-        
-        .popup-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-        
-        .modal-content {
-            background: white;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 5px;
-            position: relative;
-        }
-        
-        .dark .modal-content {
-            background: #1f2937;
-            color: #f3f4f6;
-        }
-        
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-        
-        .description-box h4 {
-            margin-bottom: 10px;
-        }
-        
-        .description-box p {
-            margin-bottom: 15px;
-        }
-        
-        .categories {
-            color: #6c757d;
-            font-size: 14px;
-        }
-        
-        .dark .categories {
-            color: #9ca3af;
-        }
-        
-        .link-box {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .link-box a {
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-        }
-        
-        .link-box a:first-child {
-            background: #007bff;
-            color: white;
-        }
-        
-        .link-box a:last-child {
-            background: #6c757d;
-            color: white;
-        }
-        
-        #go-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: #007bff;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        #go-top.show {
-            opacity: 1;
-        }
-        
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-        
-        .dark #preloader {
-            background: #111827;
-        }
-        
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #007bff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        .dark .loader {
-            border: 5px solid #374151;
-            border-top: 5px solid #3b82f6;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
 
-        /* Dark mode transitions */
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        /* Custom scrollbar for dark mode */
-        .dark ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #1f2937;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #4b5563;
-            border-radius: 4px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
-        }
-
-        .portfolio-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        .portfolio-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
-        }
-        
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(147, 51, 234, 0.95) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .portfolio-card:hover::before {
-            opacity: 1;
-        }
-        
-        .portfolio-card-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .icon-container {
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .portfolio-card:hover .icon-container {
-            transform: scale(1.1) rotate(5deg);
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active {
-            background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
-            color: white;
-        }
-        
-        .tech-badge {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .category-badge {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-        
-        /* Gradient variations for different cards */
-        .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gradient-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .gradient-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .gradient-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .gradient-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .gradient-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
-    </style>
+    
 </head>
 <body id="top" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
 
@@ -464,7 +59,7 @@
                 <div class="logo">
                     <a href="#top" class="text-2xl font-bold text-primary dark:text-blue-400">Ardhika</a>
                 </div>
-                <nav id="main-nav" class="hidden md:block">
+                <nav id="main-nav" class="hidden md:block dark:bg-gray-800">
                     <ul class="flex space-x-6">
                         <li><a href="#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
                         <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
@@ -635,7 +230,7 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="container mx-auto px-4">
         <!-- Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-12 -mt-3">
             <div class="inline-block mb-4">
                 <span class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Portfolio</span>
             </div>
@@ -738,6 +333,7 @@
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Laravel</span>
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">MySQL</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Tailwind CSS</span>
                         </div>
                         
                         <a href="https://github.com/ardhikaaa/library-management-laravel-11rpl2" target="_blank" class="inline-flex items-center gap-2 bg-white text-cyan-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
@@ -764,7 +360,9 @@
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">MySQL</span>
-                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Bootstrap</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Tailwind CSS</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Laravel</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">JavaScript</span>
                         </div>
                         
                         <a href="https://github.com/ardhikaaa/UPP" target="_blank" class="inline-flex items-center gap-2 bg-white text-green-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
@@ -791,7 +389,7 @@
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">React Native</span>
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Expo</span>
-                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">JavaScript</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
                         </div>
                         
                         <a href="https://github.com/ardhikaaa/Tugasku" target="_blank" class="inline-flex items-center gap-2 bg-white text-orange-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
@@ -818,7 +416,7 @@
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">React Native</span>
                             <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Expo</span>
-                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">JavaScript</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
                         </div>
                         
                         <a href="https://github.com/ardhikaaa/Ternak-uang" target="_blank" class="inline-flex items-center gap-2 bg-white text-indigo-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
@@ -828,7 +426,109 @@
                 </div>
             </div>
 
+            <!-- Portfolio Item 7: Pengaduan Siswa -->
+            <div class="portfolio-item" data-category="web-dev">
+                <div class="portfolio-card gradient-7 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fi fi-sr-student text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">Web Dev</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">Pengaduan Siswa</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">A student report (pengaduan siswa) web application designed to manage student efficiently with a clean and responsive interface.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Laravel</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">MySQL</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Tailwind CSS</span>
+                        </div>
+                        
+                        <a href="https://github.com/ardhikaaa/pengaduan-siswa" target="_blank" class="inline-flex items-center gap-2 bg-white text-green-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 8: Financing -->
+            <div class="portfolio-item" data-category="web-design">
+                <div class="portfolio-card gradient-8 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fi fi-sr-usd-circle text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">Web Design</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">Financing</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">A responsive financing website built with HTML and CSS, showcasing clean design, professional aesthetics, and user-friendly layout.</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">HTML5</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">CSS3</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Bootstrap</span>
+                        </div>
+                        
+                        <a href="https://github.com/ardhikaaa/financing" target="_blank" class="inline-flex items-center gap-2 bg-white text-green-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 9: MoodTracker -->
+            <div class="portfolio-item" data-category="app-dev">
+                <div class="portfolio-card gradient-9 p-8 text-white shadow-xl h-full">
+                    <div class="portfolio-card-content flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="icon-container rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-smile text-4xl text-white"></i>
+                            </div>
+                            <span class="category-badge text-xs font-bold px-3 py-1.5 rounded-full">App Dev</span>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-3">MoodTracker</h3>
+                        <p class="text-sm mb-4 opacity-90 leading-relaxed flex-grow">Mental health tracking app with mood analytics and journaling</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">React Native</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">PHP</span>
+                            <span class="tech-badge text-xs px-3 py-1.5 rounded-full font-medium">Expo</span>
+                        </div>
+            
+                       <div class="flex gap-3">
+                            <a href="https://github.com/ardhikaaa/MoodTracker" target="_blank" 
+                            class="inline-flex items-center gap-2 bg-white text-green-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                                Frontend <i class="fas fa-arrow-right"></i>
+                            </a>
+                            
+                            <a href="https://github.com/ardhikaaa/BE-MoodTracker" target="_blank" 
+                            class="inline-flex items-center gap-2 bg-white text-blue-600 px-5 py-2.5 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:gap-3">
+                                Backend <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- Pagination -->
+        <!-- <div class="flex justify-center items-center mt-12 gap-4">
+            <button id="prevPage" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <span id="pageInfo" class="px-6 py-3 font-bold text-gray-800 bg-white rounded-full shadow-md"></span>
+            <button id="nextPage" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+        </div> -->
+
     </section>
 
     <!-- Contact Section -->
