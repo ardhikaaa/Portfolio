@@ -198,85 +198,149 @@ function updateDarkModeIcon(theme) {
     });
 });
 
- // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => {
-                    b.classList.remove('active');
-                    b.style.background = '';
-                    b.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
-                });
-                
-                // Add active class to clicked button
-                btn.classList.add('active');
-                btn.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
-                
-                const filterValue = btn.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 10);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
+let activeFilter = null; 
 
-        // Add transition styles to items
+// ===================== PAGINATION SETUP =====================
+const itemsPerPage = 3;
+const items = document.querySelectorAll('.portfolio-item');
+const totalItems = items.length;
+const totalPages = Math.ceil(totalItems / itemsPerPage);
+let currentPage = 1;
+
+const prevBtn = document.getElementById('prevPage');
+const nextBtn = document.getElementById('nextPage');
+const pageInfo = document.getElementById('pageInfo');
+
+// Fungsi utama menampilkan halaman
+function showPage(page) {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+
+    if (activeFilter) {
+        // Mode filter aktif
         portfolioItems.forEach(item => {
-            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            if (activeFilter === 'all' || item.getAttribute('data-category') === activeFilter) {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    } else {
+        // Mode pagination aktif
+        items.forEach((item, index) => {
+            if (index >= start && index < end) {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    updatePaginationUI();
+}
+
+// Fungsi memperbarui tampilan pagination
+function updatePaginationUI() {
+    if (activeFilter) {
+        pageInfo.textContent = `Filtered: ${activeFilter}`;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+    } else {
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        prevBtn.disabled = (currentPage === 1);
+        nextBtn.disabled = (currentPage === totalPages);
+    }
+}
+
+// Tombol navigasi pagination
+prevBtn.addEventListener('click', () => {
+    if (!activeFilter && currentPage > 1) {
+        currentPage--;
+        showPage(currentPage);
+    }
+});
+
+nextBtn.addEventListener('click', () => {
+    if (!activeFilter && currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage);
+    }
+});
+
+
+// ===================== FILTER FUNCTION =====================
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const filterValue = btn.getAttribute('data-filter');
+
+        // Jika klik tombol yang sama dua kali → matikan filter
+        if (activeFilter === filterValue) {
+            activeFilter = null;
+            resetFilterButtons();
+
+            // Kembalikan SEMUA item ke tampilan normal
+            portfolioItems.forEach(item => {
+                item.style.display = 'block';
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            });
+
+            // Jalankan pagination normal lagi
+            showPage(currentPage);
+            return;
+        }
+
+        // Aktifkan filter baru
+        activeFilter = filterValue;
+        resetFilterButtons();
+        setActiveButton(btn);
+
+        // Tampilkan hasil filter dengan animasi
+        portfolioItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                item.style.display = 'block';
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'scale(1)';
+                }, 10);
+            } else {
+                item.style.opacity = '0';
+                item.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    item.style.display = 'none';
+                }, 300);
+            }
         });
 
-// ubah ke 4 kalau mau tampil 4 card per halaman
-// const itemsPerPage = 3; 
-//     const items = document.querySelectorAll('.portfolio-item');
-//     const totalItems = items.length;
-//     const totalPages = Math.ceil(totalItems / itemsPerPage);
-//     let currentPage = 1;
+        updatePaginationUI(); 
+    });
+});
 
-//     const prevBtn = document.getElementById('prevPage');
-//     const nextBtn = document.getElementById('nextPage');
-//     const pageInfo = document.getElementById('pageInfo');
+// Utility: reset tampilan tombol
+function resetFilterButtons() {
+    filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '';
+        b.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+    });
+}
 
-//     function showPage(page) {
-//         const start = (page - 1) * itemsPerPage;
-//         const end = start + itemsPerPage;
+function setActiveButton(btn) {
+    btn.classList.add('active');
+    btn.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+}
 
-//         items.forEach((item, index) => {
-//             item.style.display = (index >= start && index < end) ? 'block' : 'none';
-//         });
+// Tambahkan transisi halus
+portfolioItems.forEach(item => {
+    item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+});
 
-//         pageInfo.textContent = `Page ${page} of ${totalPages}`;
-//         prevBtn.disabled = (page === 1);
-//         nextBtn.disabled = (page === totalPages);
-//     }
-
-//     prevBtn.addEventListener('click', () => {
-//         if (currentPage > 1) {
-//             currentPage--;
-//             showPage(currentPage);
-//         }
-//     });
-
-//     nextBtn.addEventListener('click', () => {
-//         if (currentPage < totalPages) {
-//             currentPage++;
-//             showPage(currentPage);
-//         }
-//     });
-
-//     // Inisialisasi tampilan pertama
-//     showPage(currentPage);
+// Inisialisasi pertama
+showPage(currentPage);
