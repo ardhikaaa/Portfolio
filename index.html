@@ -109,7 +109,7 @@
                         Let's build something amazing!</p>
                 </div>
             </div>
-            <div class="about-content grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="about-content px-10 grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div>
                     <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Profile</h3>
                     <p class="mb-6 text-gray-700 dark:text-gray-300">A student of SMK Informatika Pesat majoring in RPL (Software Engineering). 
@@ -136,38 +136,49 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Skills</h3>
-                    <p class="mb-6 text-gray-700 dark:text-gray-300">master html, css, and have mastered front-end programming languages such as, javascript, and react, and back-end languages such as php</p>
-                    <ul class="skill-bars space-y-4">
-                        <li>
-                            <div class="flex justify-between mb-1">
-                                <strong class="text-gray-900 dark:text-white">HTML5</strong>
-                                <span class="text-gray-700 dark:text-gray-300">90%</span>
+                    <p class="mb-8 text-gray-700 dark:text-gray-300">Master HTML, CSS, and have mastered front-end programming languages such as JavaScript and React, and back-end languages such as PHP</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <!-- HTML5 -->
+                        <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                            <div class="w-16 h-16 flex items-center justify-center mb-3">
+                                <i class="fab fa-html5 text-5xl text-orange-600 group-hover:scale-110 transition-transform duration-300"></i>
                             </div>
-                            <div class="progress percent90"></div>                            
-                        </li>
-                        <li>
-                            <div class="flex justify-between mb-1">
-                                <strong class="text-gray-900 dark:text-white">CSS3</strong>
-                                <span class="text-gray-700 dark:text-gray-300">85%</span>
+                            <strong class="text-gray-900 dark:text-white text-sm font-semibold">HTML5</strong>
+                        </div>
+
+                        <!-- CSS3 -->
+                        <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                            <div class="w-16 h-16 flex items-center justify-center mb-3">
+                                <i class="fab fa-css3-alt text-5xl text-blue-600 group-hover:scale-110 transition-transform duration-300"></i>
                             </div>
-                            <div class="progress percent85"></div>                            
-                        </li>
-                        <li>
-                            <div class="flex justify-between mb-1">
-                                <strong class="text-gray-900 dark:text-white">JavaScript</strong>
-                                <span class="text-gray-700 dark:text-gray-300">55%</span>
+                            <strong class="text-gray-900 dark:text-white text-sm font-semibold">CSS3</strong>
+                        </div>
+
+                        <!-- JavaScript -->
+                        <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                            <div class="w-16 h-16 flex items-center justify-center mb-3">
+                                <i class="fab fa-js text-5xl text-yellow-500 group-hover:scale-110 transition-transform duration-300"></i>
                             </div>
-                            <div class="progress percent55"></div>                            
-                        </li>
-                        <li>						
-                            <div class="flex justify-between mb-1">
-                                <strong class="text-gray-900 dark:text-white">PHP</strong>
-                                <span class="text-gray-700 dark:text-gray-300">70%</span>
+                            <strong class="text-gray-900 dark:text-white text-sm font-semibold">JavaScript</strong>
+                        </div>
+
+                        <!-- PHP -->
+                        <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                            <div class="w-16 h-16 flex items-center justify-center mb-3">
+                                <i class="fab fa-php text-5xl text-indigo-600 group-hover:scale-110 transition-transform duration-300"></i>
                             </div>
-                            <div class="progress percent70"></div>                           
-                        </li>
-                    </ul>
-                </div>
+                            <strong class="text-gray-900 dark:text-white text-sm font-semibold">PHP</strong>
+                        </div>
+
+                        <!-- React -->
+                        <div class="flex flex-col items-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                            <div class="w-16 h-16 flex items-center justify-center mb-3">
+                                <i class="fab fa-react text-5xl text-cyan-500 group-hover:scale-110 transition-transform duration-300"></i>
+                            </div>
+                            <strong class="text-gray-900 dark:text-white text-sm font-semibold">React</strong>
+                        </div>
+                    </div>
             </div>
             <div class="button-section mt-12 text-center">
                 <a href="https://github.com/ardhikaaa" target="_blank" class="button button-primary inline-block bg-primary text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors">Github</a>
@@ -227,7 +238,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="container mx-auto px-4">
+    <section id="portfolio" class="container mx-auto px-10">
         <!-- Header -->
         <div class="text-center mb-12 -mt-3">
             <div class="inline-block mb-4">
@@ -243,7 +254,7 @@
 
         <!-- Filter Buttons -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button class="filter-btn active px-6 py-3 rounded-full font-medium shadow-lg hover:shadow-xl" data-filter="all">
+            <button class="filter-btn px-6 py-3 rounded-full font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-lg hover:shadow-xl" data-filter="all">
                 All Projects
             </button>
             <button class="filter-btn px-6 py-3 rounded-full font-medium bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-lg hover:shadow-xl" data-filter="web-design">
@@ -555,89 +566,64 @@
         </div>
 
         <!-- Pagination -->
-        <div class="flex justify-center items-center mt-12 gap-4">
-            <button id="prevPage" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
-                <i class="fas fa-arrow-left"></i> Previous
+       <div class="flex flex-col sm:flex-row justify-center items-center my-8 gap-4 w-full px-4">
+            <button id="prevPage"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                <i class="fas fa-arrow-left"></i>
+                <span class="hidden sm:inline">Previous</span>
             </button>
-            <span id="pageInfo" class="px-6 py-3 font-bold text-gray-800 bg-white rounded-full shadow-md"></span>
-            <button id="nextPage" class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
-                Next <i class="fas fa-arrow-right"></i>
+
+            <span id="pageInfo"
+                class="min-w-[100px] text-center px-6 py-3 font-bold text-gray-800 bg-white rounded-full shadow-md">
+            </span>
+
+            <button id="nextPage"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white px-5 py-3 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100">
+                <span class="hidden sm:inline">Next</span>
+                <i class="fas fa-arrow-right"></i>
             </button>
-        </div>
-
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 mt-10 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-4">
-            <div class="contact-info grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="col text-center">
-                    <div class="icon mb-4 flex justify-center">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </div>
-                    </div>
-                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Email Me At</h5>
-                    <p class="text-gray-700 dark:text-gray-300">radityaardhika@gmail.com</p>
-                </div>
-                <div class="col text-center">
-                    <div class="icon mb-4 flex justify-center">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
-                            <i class="fas fa-phone text-xl"></i>
-                        </div>
-                    </div>
-                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Call Me At</h5>
-                    <p class="text-gray-700 dark:text-gray-300">Phone: (+62) 812-9728-2788</p>
-                </div>
-                <div class="col text-center">
-                    <div class="icon mb-4 flex justify-center">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </div>
-                    </div>
-                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">instagram</h5>
-                    <p class="text-gray-700 dark:text-gray-300">@radityaardhika</p>
-                </div>
-                <div class="col text-center">
-                    <div class="icon mb-4 flex justify-center">
-                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white">
-                            <i class="fab fa-linkedin text-xl"></i>
-                        </div>
-                    </div>
-                    <h5 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">LinkedIn</h5>
-                    <p class="text-gray-700 dark:text-gray-300">Ardhika Raditya</p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Social Media -->
-    <section>
-    <div class="container mx-auto px-4 py-12">
-        <div class="section-intro text-center mb-16">
-            <h5 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">Social Media</h5>
+    <section class="bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4 py-16">
+        <div class="section-intro text-center mb-12">
+            <h5 class="text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-white">Connect With Me</h5>
+            <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Let's stay connected! Follow me on social media to see my latest projects and updates.
+            </p>
         </div>
-        <div class="flex justify-center items-center gap-6 sm:gap-8 md:gap-12 max-w-md mx-auto">
+        <div class="flex justify-center items-center gap-8 md:gap-10 max-w-lg mx-auto">
             <a href="https://github.com/ardhikaaa" 
                target="_blank" 
                rel="noopener noreferrer"
-               class="hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+               class="group flex flex-col items-center gap-2 hover:text-primary transition-all duration-300 hover:scale-110 transform"
                aria-label="GitHub Profile">
-                <i class="fab fa-github text-4xl sm:text-5xl md:text-6xl"></i>
+                <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <i class="fab fa-github text-2xl md:text-3xl text-gray-700 dark:text-gray-200 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors duration-300">GitHub</span>
             </a>
             <a href="https://www.instagram.com/radityaardhika/" 
                target="_blank" 
                rel="noopener noreferrer"
-               class="hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+               class="group flex flex-col items-center gap-2 hover:text-primary transition-all duration-300 hover:scale-110 transform"
                aria-label="Instagram Profile">
-                <i class="fab fa-instagram text-4xl sm:text-5xl md:text-6xl"></i>
+                <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <i class="fab fa-instagram text-2xl md:text-3xl text-gray-700 dark:text-gray-200 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors duration-300">Instagram</span>
             </a>
             <a href="https://www.linkedin.com/in/ardhika-raditya-19636138a/" 
                target="_blank" 
                rel="noopener noreferrer"
-               class="hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+               class="group flex flex-col items-center gap-2 hover:text-primary transition-all duration-300 hover:scale-110 transform"
                aria-label="LinkedIn Profile">
-                <i class="fab fa-linkedin text-4xl sm:text-5xl md:text-6xl"></i>
+                <div class="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <i class="fab fa-linkedin text-2xl md:text-3xl text-gray-700 dark:text-gray-200 group-hover:text-primary transition-colors duration-300"></i>
+                </div>
+                <span class="text-sm font-medium text-gray-600 dark:text-gray-400 group-hover:text-primary transition-colors duration-300">LinkedIn</span>
             </a>
         </div>
     </div>
@@ -655,9 +641,9 @@
     </footer>
 
     <!-- Go Top Button -->
-    <div id="go-top">
+    <!-- <div id="go-top">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </div> -->
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>

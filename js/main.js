@@ -86,25 +86,25 @@ function updateDarkModeIcon(theme) {
     });
 
     // Go Top Button
-    const goTopButton = document.getElementById('go-top');
+    // const goTopButton = document.getElementById('go-top');
     
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            goTopButton.classList.remove('opacity-0');
-            goTopButton.classList.add('opacity-100');
-        } else {
-            goTopButton.classList.remove('opacity-100');
-            goTopButton.classList.add('opacity-0');
-        }
-    });
+    // window.addEventListener('scroll', function() {
+    //     if (window.pageYOffset > 300) {
+    //         goTopButton.classList.remove('opacity-0');
+    //         goTopButton.classList.add('opacity-100');
+    //     } else {
+    //         goTopButton.classList.remove('opacity-100');
+    //         goTopButton.classList.add('opacity-0');
+    //     }
+    // });
 
-    // Add click event to go top button
-    goTopButton.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+    // // Add click event to go top button
+    // goTopButton.addEventListener('click', function() {
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: 'smooth'
+    //     });
+    // });
 
     // Portfolio Filter
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -201,7 +201,7 @@ function updateDarkModeIcon(theme) {
 const filterBtns = document.querySelectorAll('.filter-btn');
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-let activeFilter = null; 
+let activeFilter = null; // default: filter mati
 
 // ===================== PAGINATION SETUP =====================
 const itemsPerPage = 3;
@@ -253,7 +253,7 @@ function updatePaginationUI() {
         prevBtn.disabled = true;
         nextBtn.disabled = true;
     } else {
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        pageInfo.textContent = `${currentPage} / ${totalPages}`;
         prevBtn.disabled = (currentPage === 1);
         nextBtn.disabled = (currentPage === totalPages);
     }
@@ -292,7 +292,8 @@ filterBtns.forEach(btn => {
                 item.style.transform = 'scale(1)';
             });
 
-            // Jalankan pagination normal lagi
+            // Kembali ke halaman 1 agar layout rapi
+            currentPage = 1;
             showPage(currentPage);
             return;
         }
@@ -342,5 +343,5 @@ portfolioItems.forEach(item => {
     item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
 });
 
-// Inisialisasi pertama
-showPage(currentPage);
+// Inisialisasi pertama: tampilkan halaman 1 (tanpa filter)
+showPage(1);
