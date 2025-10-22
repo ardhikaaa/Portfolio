@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Ardhika's Certificates</title>
+    <link rel="icon" type="image/png" href="images/a.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icon -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css">
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -42,7 +45,12 @@
     </script>
 
 </head>
-<body>
+<body id="top" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
 
     <!-- Header -->
     <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-300">
@@ -53,9 +61,9 @@
                 </div>
                 <nav id="main-nav" class="hidden md:block dark:bg-gray-800">
                     <ul class="flex space-x-6">
-                        <li><a href="#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
-                        <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
-                        <li><a href="#resume" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Resume</a></li>
+                        <li><a href="index.html#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="index.html#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="index.html#resume" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Resume</a></li>
                         <li><a href="index.html#portfolio" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Portfolio</a></li>
                         <li><a href="certificates.html" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Certification</a></li>
                     </ul>
@@ -106,15 +114,15 @@
             </div>
 
             <!-- Certificates Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-8 gap-8">
                 
                 <!-- Certificate Card Template 1 -->
-                <div class="certificate-item" data-category="web-dev">
+                <div class="certificate-item" data-category="web-design">
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                         <!-- Certificate Image -->
                         <div class="relative h-48 bg-gradient-to-br from-blue-500 to-purple-600 overflow-hidden group">
                             <!-- Placeholder untuk foto sertifikat -->
-                            <img src="images/certificates/cert1.jpg" alt="Certificate" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300">
+                            <img src="assets/cert/sertikom1_page-2.jpg" alt="Certificate" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <button class="view-cert-btn bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors" data-cert="cert1">
                                     <i class="fas fa-eye mr-2"></i>View Certificate
@@ -125,23 +133,23 @@
                         <!-- Certificate Info -->
                         <div class="p-6">
                             <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs font-semibold px-3 py-1 rounded-full">Web Development</span>
+                                <span class="bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 text-xs font-semibold px-3 py-1 rounded-full">Web Design</span>
                             </div>
-                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Full Stack Web Development</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Issued by: Coursera</p>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Front-end Web Development</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Issued by: PT. Wan Teknologi Internasional</p>
                             <div class="flex items-center text-gray-500 dark:text-gray-500 text-sm">
                                 <i class="fas fa-calendar mr-2"></i>
-                                <span>January 2024</span>
+                                <span>December 2023</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Certificate Card Template 2 -->
-                <div class="certificate-item" data-category="web-design">
+                <div class="certificate-item" data-category="web-dev">
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                         <div class="relative h-48 bg-gradient-to-br from-green-500 to-teal-600 overflow-hidden group">
-                            <img src="images/certificates/cert2.jpg" alt="Certificate" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300">
+                            <img src="assets/cert/sertikom2_page-2.jpg" alt="Certificate" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <button class="view-cert-btn bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors" data-cert="cert2">
                                     <i class="fas fa-eye mr-2"></i>View Certificate
@@ -150,23 +158,23 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 text-xs font-semibold px-3 py-1 rounded-full">Web Design</span>
+                                <span class="bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 text-xs font-semibold px-3 py-1 rounded-full">Web Development</span>
                             </div>
-                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">React Native Developer</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Issued by: Udemy</p>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Full Stack Developer</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Issued by: PT Dimensi Kreasi Nusantara</p>
                             <div class="flex items-center text-gray-500 dark:text-gray-500 text-sm">
                                 <i class="fas fa-calendar mr-2"></i>
-                                <span>March 2024</span>
+                                <span>June 2024</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Certificate Card Template 3 -->
-                <div class="certificate-item" data-category="app-dev">
+                <div class="certificate-item" data-category="web-dev">
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                         <div class="relative h-48 bg-gradient-to-br from-pink-500 to-rose-600 overflow-hidden group">
-                            <img src="images/certificates/cert3.jpg" alt="Certificate" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300">
+                            <img src="assets/cert/sertikom3_page-2.jpg" alt="Certificate" class="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <button class="view-cert-btn bg-white text-gray-900 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors" data-cert="cert3">
                                     <i class="fas fa-eye mr-2"></i>View Certificate
@@ -175,33 +183,24 @@
                         </div>
                         <div class="p-6">
                             <div class="flex items-center gap-2 mb-3">
-                                <span class="bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 text-xs font-semibold px-3 py-1 rounded-full">App Development</span>
+                                <span class="bg-pink-100 dark:bg-pink-900 text-pink-600 dark:text-pink-300 text-xs font-semibold px-3 py-1 rounded-full">Web Development</span>
                             </div>
-                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">UI/UX Design Fundamentals</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Issued by: Google</p>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Full Stack Developer</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">Issued by: PT Kreasi Media</p>
                             <div class="flex items-center text-gray-500 dark:text-gray-500 text-sm">
                                 <i class="fas fa-calendar mr-2"></i>
-                                <span>February 2024</span>
+                                <span>December 2024</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Tambahkan lebih banyak card di sini dengan struktur yang sama -->
-                <!-- Anda bisa menyalin template di atas dan mengubah:
-                     - data-category (web-dev, mobile-dev, design, other)
-                     - Gradient background (from-x-500 to-y-600)
-                     - Badge color (bg-x-100, text-x-600)
-                     - Certificate title, issuer, dan date
-                     - data-cert value untuk modal
-                -->
 
             </div>
         </div>
     </section>
 
     <!-- Certificate Modal -->
-    <div id="certificateModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden items-center justify-center p-4">
+    <div id="certificateModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden relative">
             <button id="closeModal" class="absolute top-4 right-4 bg-white dark:bg-gray-700 text-gray-800 dark:text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors z-10">
                 <i class="fas fa-times text-xl"></i>
@@ -211,10 +210,7 @@
                 <div class="mt-6 text-center">
                     <h3 id="modalCertTitle" class="text-2xl font-bold text-gray-900 dark:text-white mb-2"></h3>
                     <p id="modalCertIssuer" class="text-gray-600 dark:text-gray-400 mb-4"></p>
-                    <a id="modalCertLink" href="#" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all">
-                        <i class="fas fa-external-link-alt"></i>
-                        Verify Certificate
-                    </a>
+                    <p id="modalCertDesc" class="text-gray-600 dark:text-gray-400 mb-4"></p>
                 </div>
             </div>
         </div>
