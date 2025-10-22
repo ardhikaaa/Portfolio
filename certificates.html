@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007bff',
+                        secondary: '#6c757d',
+                        dark: '#212529',
+                        light: '#f8f9fa',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <a href="#top" class="text-2xl font-bold text-primary dark:text-blue-400">Ardhika</a>
+                </div>
+                <nav id="main-nav" class="hidden md:block dark:bg-gray-800">
+                    <ul class="flex space-x-6">
+                        <li><a href="#intro" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="#resume" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Resume</a></li>
+                        <li><a href="index.html#portfolio" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Portfolio</a></li>
+                        <li><a href="certificates.html" class="nav-link hover:text-primary dark:hover:text-blue-400 transition-colors">Certification</a></li>
+                    </ul>
+                </nav>
+                <div class="header-controls flex items-center space-x-4">
+                    <button class="dark-mode-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                    <button class="nav-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 md:hidden" id="nav-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
