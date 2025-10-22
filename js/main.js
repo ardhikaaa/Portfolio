@@ -85,27 +85,6 @@ function updateDarkModeIcon(theme) {
         });
     });
 
-    // Go Top Button
-    // const goTopButton = document.getElementById('go-top');
-    
-    // window.addEventListener('scroll', function() {
-    //     if (window.pageYOffset > 300) {
-    //         goTopButton.classList.remove('opacity-0');
-    //         goTopButton.classList.add('opacity-100');
-    //     } else {
-    //         goTopButton.classList.remove('opacity-100');
-    //         goTopButton.classList.add('opacity-0');
-    //     }
-    // });
-
-    // // Add click event to go top button
-    // goTopButton.addEventListener('click', function() {
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: 'smooth'
-    //     });
-    // });
-
     // Portfolio Filter
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.folio-item');
