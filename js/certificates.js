@@ -163,6 +163,18 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Full Stack Developer',
             issuer: 'PT Kreasi Media',
             desc: 'Membangun website library management menggunakan framework Laravel dengan predikat kompeten (93) yang disahkan PT Kreasi Media.'
+        },
+        cert4: {
+            image: 'assets/cert/sertikom4_page-1.jpg',
+            title: 'Full Stack Developer',
+            issuer: 'Ginvo Studio',
+            desc: 'Membangun aplikasi MoodTracker menggunakan React Native dan Laravel dengan predikat kompeten (98) yang disahkan Ginvo Studio.'
+        },
+        cert5: {
+            image: 'assets/cert/toeic2.jpg',
+            title: 'TOEIC',
+            issuer: 'PT International Test Center',
+            desc: 'Mendapatkan sertifikat TOEIC dengan nilai 790 yang diselenggarakan oleh ITC.'
         }
     };
 
